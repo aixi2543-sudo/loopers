@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="效原的个人档案：风景、思想与日常记录。">
+  <meta name="theme-color" content="#e8dfcc">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://thephoenixraincey.top/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="效原 · Archive">
+  <meta property="og:title" content="效原 · Archive">
+  <meta property="og:description" content="效原的个人档案：风景、思想与日常记录。">
+  <meta property="og:url" content="https://thephoenixraincey.top/">
+  <meta property="og:image" content="https://thephoenixraincey.top/assets/character.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>效原 · Archive</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23131313'/%3E%3Cpath d='M16 20h32M16 32h24M16 44h32' stroke='%23f4f1ea' stroke-width='6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-locked">
+  <!-- 开始界面：点击任意位置进入 -->
+  <div class="entrance" id="entrance" role="dialog" aria-label="进入效原的个人主页">
+    <button class="entrance__trigger" id="enterButton" type="button" aria-label="点击进入主页">
+      <span class="entrance__label">点击进入</span>
+      <span class="entrance__rule" aria-hidden="true"></span>
+      <span class="character" aria-hidden="true">
+        <img class="character__base" src="assets/character-base.png" alt="">
+        <span class="character__hand-layer">
+          <img class="character__hand" src="assets/character-hand.png" alt="">
+          <span class="spark spark--one"></span>
+          <span class="spark spark--two"></span>
+          <span class="spark spark--three"></span>
+        </span>
+      </span>
+      <span class="entrance__hint">XIAOYUAN · PERSONAL ARCHIVE · 2026</span>
+    </button>
+  </div>
+
+  <main class="archive" id="archive" aria-hidden="true">
+    <header class="masthead">
+      <div class="identity">
+        <!-- 修改昵称：替换下面的“效原” -->
+        <p class="identity__cn">效原</p>
+        <h1>XIAOYUAN<br>ARCHIVE</h1>
+      </div>
+      <div class="issue" aria-label="档案编号">
+        <span>FILE NO.</span>
+        <strong>XY—001</strong>
+      </div>
+    </header>
+
+    <nav class="site-nav" aria-label="网站导航">
+      <a aria-current="page" href="./">首页</a>
+      <a href="articles/">文章</a>
+      <a href="categories/">分类</a>
+      <a href="about/">About</a>
+    </nav>
+
+    <!-- 修改栏目名称：同时修改按钮文字和对应内容区 -->
+    <nav class="tabs" aria-label="主页栏目" role="tablist">
+      <button class="tab is-active" id="tab-landscapes" role="tab" aria-selected="true" aria-controls="panel-landscapes" data-tab="landscapes" type="button">
+        <span>01</span> LANDSCAPES
+      </button>
+      <button class="tab" id="tab-thoughts" role="tab" aria-selected="false" aria-controls="panel-thoughts" data-tab="thoughts" type="button">
+        <span>02</span> THOUGHTS
+      </button>
+      <button class="tab" id="tab-self" role="tab" aria-selected="false" aria-controls="panel-self" data-tab="self" type="button">
+        <span>03</span> SELF
+      </button>
+    </nav>
+
+    <section class="panels" aria-live="polite">
+      <!-- LANDSCAPES 内容：游记类文章。复制 button 并修改 data-file 即可新增 -->
+      <div class="panel is-active" id="panel-landscapes" role="tabpanel" aria-labelledby="tab-landscapes" tabindex="0">
+        <div class="panel__index">01 / LANDSCAPES · 02 ARTICLES</div>
+        <div class="collection-heading">
+          <p class="eyebrow">TRAVELOGUES / 游记</p>
+          <h2>走过的地方，<br>和同行的人。</h2>
+        </div>
+        <div class="article-list">
+          <button class="article-card" type="button" data-title="候鸟与雄狮" data-file="articles/houniao-yuxiongshi.txt">
+            <span class="article-card__no">L—01</span>
+            <span class="article-card__title">候鸟与雄狮</span>
+            <span class="article-card__meta">北京 / 友人 / 夏日逃亡</span>
+            <span class="article-card__arrow">↗</span>
+          </button>
+          <button class="article-card" type="button" data-title="流浪的马蹄铁" data-file="articles/liulang-matit-ie.txt">
+            <span class="article-card__no">L—02</span>
+            <span class="article-card__title">流浪的马蹄铁</span>
+            <span class="article-card__meta">瑞金至南昌 / 背包客</span>
+            <span class="article-card__arrow">↗</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- THOUGHTS 内容：随笔、影评、思想记录与幻想叙事 -->
+      <div class="panel" id="panel-thoughts" role="tabpanel" aria-labelledby="tab-thoughts" tabindex="0" hidden>
+        <div class="panel__index">02 / THOUGHTS ·  9ARTICLES</div>
+        <div class="collection-heading collection-heading--compact">
+          <p class="eyebrow">ESSAYS / 想法</p>
+          <h2>世界很吵，<br>先保留自己的声音。</h2>
+        </div>
+        <div class="article-list">
+          <button class="article-card" type="button" data-title="怪物的反义词" data-file="articles/guaiwu-revised.txt"><span class="article-card__no">T—01</span><span class="article-card__title">怪物的反义词</span><span class="article-card__meta">电影/浑浊的善意</span><span class="article-card__arrow">↗</span></button>
+            <button class="article-card" type="button" data-title="桐桑怀橘" data-file="articles/tongsang-huaiju.txt"><span class="article-card__no">T—02</span><span class="article-card__title">桐桑怀橘</span><span class="article-card__meta">幻想叙事 / 梦境</span><span class="article-card__arrow">↗</span></button>
+                  <button class="article-card" type="button" data-title="狂舞终乐章" data-file="articles/kuangwu-zhongyuezhang.txt"><span class="article-card__no">T—03</span><span class="article-card__title">狂舞终乐章</span><span class="article-card__meta">《爱乐之城》影评</span><span class="article-card__arrow">↗</span></button>
+          <button class="article-card" type="button" data-title="星末贪狼" data-file="articles/xingmo-tanlang.txt"><span class="article-card__no">T—04</span><span class="article-card__title">星末贪狼</span><span class="article-card__meta">角色 / 星辰 / 自我</span><span class="article-card__arrow">↗</span></button>
+          <button class="article-card" type="button" data-title="永不独行的独行者" data-file="articles/yongbu-duxing.txt"><span class="article-card__no">T—05</span><span class="article-card__title">永不独行的独行者</span><span class="article-card__meta">人与人 / 独行</span><span class="article-card__arrow">↗</span></button>
+          <button class="article-card" type="button" data-title="笔走龙蛇难留思念夭夭" data-file="articles/bizou-longshe.txt"><span class="article-card__no">T—06</span><span class="article-card__title">笔走龙蛇难留思念夭夭</span><span class="article-card__meta">书写 / 记忆</span><span class="article-card__arrow">↗</span></button>
+          <button class="article-card" type="button" data-title="飘然云上" data-file="articles/piaoran-yunshang.txt"><span class="article-card__no">T—07</span><span class="article-card__title">飘然云上</span><span class="article-card__meta">时代 / 诗性</span><span class="article-card__arrow">↗</span></button>
+          <button class="article-card" type="button" data-title="孤独呐喊" data-file="articles/gudu-nahan.txt"><span class="article-card__no">T—08</span><span class="article-card__title">孤独呐喊</span><span class="article-card__meta">孤独 / 思想</span><span class="article-card__arrow">↗</span></button>
+          <button class="article-card" type="button" data-title="风与彩虹的见证者" data-file="articles/fengyu-caihong.txt"><span class="article-card__no">T—09</span><span class="article-card__title">风与彩虹的见证者</span><span class="article-card__meta">科技 / 旧日 / 理想</span><span class="article-card__arrow">↗</span></button>
+        </div>
+      </div>
+
+      <!-- SELF 内容：简介、个人文章与链接 -->
+      <div class="panel" id="panel-self" role="tabpanel" aria-labelledby="tab-self" tabindex="0" hidden>
+        <div class="panel__index">03 / SELF · 02 ARTICLES</div>
+        <article class="about">
+          <p class="eyebrow">PROFILE</p>
+          <div class="about__grid">
+            <h2>效原</h2>
+            <p class="about__intro">像体育生的理科生有颗文科生的心</p>
+          </div>
+          <!-- SELF 文章：位于简介与外部链接之间 -->
+          <section class="self-writing" aria-labelledby="self-writing-title">
+            <p class="eyebrow" id="self-writing-title">SELECTED WRITING / 自述</p>
+            <div class="article-list">
+              <button class="article-card" type="button" data-title="似此星辰夜非夜" data-file="articles/sici-xingchen.txt"><span class="article-card__no">S—01</span><span class="article-card__title">似此星辰夜非夜</span><span class="article-card__meta">自省 / 告别</span><span class="article-card__arrow">↗</span></button>
+              <button class="article-card" type="button" data-title="炼狱之涉" data-file="articles/lianyu-zhishe.txt"><span class="article-card__no">S—02</span><span class="article-card__title">炼狱之涉</span><span class="article-card__meta">成长 / 理想</span><span class="article-card__arrow">↗</span></button>
+            </div>
+          </section>
+          <a class="external-link" href="https://thephoenixraincey.top" target="_blank" rel="noopener noreferrer">
+            <span>VISIT LINK</span>
+            <span>thephoenixraincey.top ↗</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- DAILY LOG 永远在栏目外，因此切换栏目时不会消失 -->
+    <section class="daily-log" aria-labelledby="daily-title">
+      <div class="section-heading">
+        <h2 id="daily-title">DAILY LOG</h2>
+        <span>ONGOING / 随时更新</span>
+      </div>
+      <div class="log-list">
+        <!-- 添加日志：复制整个 article，修改日期、预览、编号与 data-file -->
+        <article class="log-entry" data-file="articles/dailylog-intro.txt">
+          <time datetime="2026-09-16">SEP 16, 2026</time>
+          <div class="log-entry__summary">
+            <p class="log-entry__preview">主页第一次上线。先把这里留给以后。</p>
+            <button class="log-entry__toggle" type="button" aria-expanded="false" aria-controls="daily-log-001-body" aria-label="展开第 001 条日志正文">
+              <span aria-hidden="true">＋</span>
+            </button>
+          </div>
+          <span class="log-entry__no">001</span>
+          <div class="log-entry__drawer" id="daily-log-001-body" aria-hidden="true">
+            <div class="log-entry__drawer-inner">
+              <div class="log-entry__body"></div>
+            </div>
+          </div>
+        </article>
+        <article class="log-entry" data-file="articles/dailylog1.txt">
+          <time datetime="2026-09-16">SEP 16, 2026</time>
+          <div class="log-entry__summary">
+            <p class="log-entry__preview">达尔文的锁有一把充满效率的钥匙</p>
+            <button class="log-entry__toggle" type="button" aria-expanded="false" aria-controls="daily-log-002-body" aria-label="展开第 002 条日志正文">
+              <span aria-hidden="true">＋</span>
+            </button>
+          </div>
+          <span class="log-entry__no">002</span>
+          <div class="log-entry__drawer" id="daily-log-002-body" aria-hidden="true">
+            <div class="log-entry__drawer-inner">
+              <div class="log-entry__body"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 XIAOYUAN</span>
+      <a href="https://thephoenixraincey.top" target="_blank" rel="noopener noreferrer">THEPHOENIXRAINCEY.TOP ↗</a>
+      <button id="replayButton" type="button">REPLAY INTRO</button>
+    </footer>
+  </main>
+
+  <!-- 文章阅读器：由 script.js 读取对应 txt 全文 -->
+  <dialog class="reader" id="reader" aria-labelledby="readerTitle">
+    <div class="reader__bar">
+      <span>ARCHIVE READER</span>
+      <button class="reader__close" id="readerClose" type="button" aria-label="关闭文章">关闭 ×</button>
+    </div>
+    <article class="reader__article">
+      <p class="eyebrow" id="readerCategory">XIAOYUAN ARCHIVE</p>
+      <h2 id="readerTitle"></h2>
+      <div class="reader__body" id="readerBody"></div>
+    </article>
+  </dialog>
+
+  <script src="articles-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
