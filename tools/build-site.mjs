@@ -9,7 +9,7 @@ const articlesDirectory = path.join(distDirectory, 'articles');
 const siteConfig = JSON.parse(fs.readFileSync(path.join(projectDirectory, 'site.config.json'), 'utf8'));
 
 const articles = [
-  { slug: 'guzhan-yingxiong', file: 'autumn-walk.txt', title: '闻鸡起舞的孤盏英雄', category: 'thoughts', meta: '历史 / 英雄' },
+  { slug: 'guzhan-yingxiong', file: 'guzhan-yingxiong.txt', title: '闻鸡起舞的孤盏英雄', category: 'thoughts', meta: '历史 / 英雄' },
   { slug: 'houniao-yuxiongshi', file: 'houniao-yuxiongshi.txt', title: '候鸟与雄狮', category: 'landscapes', meta: '北京 / 友人 / 夏日逃亡' },
   { slug: 'liulang-matit-ie', file: 'liulang-matit-ie.txt', title: '流浪的马蹄铁', category: 'landscapes', meta: '瑞金至南昌 / 背包客' },
   { slug: 'guaiwu-revised', file: 'guaiwu-revised.txt', title: '怪物的反义词', category: 'thoughts', meta: '电影 / 浑浊的善意' },
