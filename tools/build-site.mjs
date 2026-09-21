@@ -35,8 +35,6 @@ function trimSlash(value) {
 }
 
 function inferredSiteUrl() {
-  const configured = process.env.SITE_URL?.trim();
-  if (configured) return trimSlash(configured);
   const repository = process.env.GITHUB_REPOSITORY?.split('/');
   if (repository?.length === 2 && !siteConfig.customDomain) return `https://${repository[0]}.github.io/${repository[1]}`;
   return trimSlash(siteConfig.url || '');
@@ -71,7 +69,7 @@ function head({ title, description, route, type = 'website', depth = 0, robots =
   <link rel="canonical" href="${escapeHtml(canonical)}">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="${type}">
-  <meta property="og:site_name" content="效原 · Archive">
+  <meta property="og:site_name" content="“效原” · Archive">
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${escapeHtml(canonical)}">
@@ -85,7 +83,7 @@ function navigation(depth, current = '') {
   const prefix = '../'.repeat(depth);
   const item = (href, label, key) => `<a${current === key ? ' aria-current="page"' : ''} href="${prefix}${href}">${label}</a>`;
   return `<nav class="site-nav" aria-label="网站导航">
-        ${item('', '首页', 'home')}
+        ${item('#archive', '首页', 'home')}
         ${item('articles/', '文章', 'articles')}
         ${item('categories/', '分类', 'categories')}
         ${item('about/', 'About', 'about')}
@@ -98,13 +96,13 @@ function shell({ title, description, route, depth, current, content, type }) {
 <body>
   <main class="static-page">
     <header class="static-header">
-      <a class="static-header__brand" href="${prefix}">效原 · ARCHIVE</a>
+      <a class="static-header__brand" href="${prefix}#archive">“效原” · ARCHIVE</a>
       ${navigation(depth, current)}
     </header>
     ${content}
     <footer class="footer">
       <span>© 2026 XIAOYUAN</span>
-      <a href="${prefix}">返回首页</a>
+      <a href="${prefix}#archive">返回首页</a>
     </footer>
   </main>
 </body>
@@ -143,15 +141,15 @@ for (const fileName of fs.readdirSync(articlesDirectory).filter((name) => name.e
 write('articles-data.js', `/* 此文件由 tools/build-site.mjs 自动生成，请勿手动编辑。 */\nwindow.ARTICLE_TEXTS = Object.freeze(${JSON.stringify(articleTexts, null, 2)});\n`);
 
 write('articles/index.html', shell({
-  title: '全部文章 · 效原 Archive',
-  description: '效原 Archive 的全部文章，包含游记、想法与自述。',
+  title: '全部文章 · “效原” Archive',
+  description: '“效原” Archive 的全部文章，包含游记、想法与自述。',
   route: 'articles/', depth: 1, current: 'articles',
   content: `<section class="static-hero"><p class="eyebrow">ALL WRITING / 全部文章</p><h1>ARTICLES</h1><p class="static-hero__intro">风景、思想和关于自己的记录，共 ${articles.length} 篇。</p></section><section class="static-section">${articleCards(articles, 1)}</section>`,
 }));
 
 write('categories/index.html', shell({
-  title: '分类 · 效原 Archive',
-  description: '按游记、想法与自述浏览效原 Archive。',
+  title: '分类 · “效原” Archive',
+  description: '按游记、想法与自述浏览“效原” Archive。',
   route: 'categories/', depth: 1, current: 'categories',
   content: `<section class="static-hero"><p class="eyebrow">INDEX / 分类</p><h1>CATEGORIES</h1></section><section class="static-section"><div class="category-grid">${Object.entries(categories).map(([slug, category]) => `<a class="category-card" href="${slug}/"><span>${articles.filter((article) => article.category === slug).length} ARTICLES</span><strong>${category.title}<br>${category.label}</strong></a>`).join('')}</div></section>`,
 }));
@@ -159,7 +157,7 @@ write('categories/index.html', shell({
 for (const [slug, category] of Object.entries(categories)) {
   const items = articles.filter((article) => article.category === slug);
   write(`categories/${slug}/index.html`, shell({
-    title: `${category.title} · 效原 Archive`,
+    title: `${category.title} · “效原” Archive`,
     description: category.description,
     route: `categories/${slug}/`, depth: 2, current: 'categories',
     content: `<section class="static-hero"><p class="eyebrow">CATEGORY / ${category.label}</p><h1>${category.title}</h1><p class="static-hero__intro">${category.description}</p></section><section class="static-section">${articleCards(items, 2)}</section>`,
@@ -167,17 +165,17 @@ for (const [slug, category] of Object.entries(categories)) {
 }
 
 write('about/index.html', shell({
-  title: 'About · 效原 Archive',
-  description: '关于效原：像体育生的理科生有颗文科生的心。',
+  title: 'About · “效原” Archive',
+  description: '关于“效原”：像体育生的理科生有颗文科生的心。',
   route: 'about/', depth: 1, current: 'about',
-  content: `<section class="static-hero"><p class="eyebrow">PROFILE / 关于</p><h1>效原</h1><p class="static-hero__intro">像体育生的理科生有颗文科生的心</p></section><section class="static-section"><h2>SELF</h2>${articleCards(articles.filter((article) => article.category === 'self'), 1)}</section>`,
+  content: `<section class="static-hero"><p class="eyebrow">PROFILE / 关于</p><h1>“效原”</h1><p class="static-hero__intro">${escapeHtml(siteConfig.about)}</p></section>`,
 }));
 
 for (const article of articles) {
   const text = fs.readFileSync(path.join(articlesDirectory, article.file), 'utf8');
   const category = categories[article.category];
   write(`articles/${article.slug}/index.html`, shell({
-    title: `${article.title} · 效原 Archive`,
+    title: `${article.title} · “效原” Archive`,
     description: articleDescription(article, text),
     route: `articles/${article.slug}/`, depth: 2, current: 'articles', type: 'article',
     content: `<article class="article-page"><header class="static-hero"><p class="eyebrow">${category.title} / ${category.label}</p><h1>${escapeHtml(article.title)}</h1><p class="static-hero__intro">${escapeHtml(article.meta)}</p></header><div class="article-prose">${prose(text)}<a class="article-back" href="../../categories/${article.category}/">← 返回 ${category.title}</a></div></article>`,
@@ -185,7 +183,7 @@ for (const article of articles) {
 }
 
 const homeUrl = absoluteUrl('');
-write('404.html', `${head({ title: '页面未找到 · 效原 Archive', description: '你访问的页面不存在。', route: '404.html', depth: 0, robots: 'noindex,follow' })}
+write('404.html', `${head({ title: '页面未找到 · “效原” Archive', description: '你访问的页面不存在。', route: '404.html', depth: 0, robots: 'noindex,follow' })}
 <body><main class="static-page not-found"><p class="eyebrow">ERROR 404</p><section class="static-hero"><h1>走错了路。</h1><p class="static-hero__intro">这个地址不存在，或内容已经移动。</p><a class="article-back" href="${escapeHtml(homeUrl)}">← 返回首页</a></section></main></body></html>`);
 
 const publicRoutes = ['', 'articles/', 'categories/', 'about/', ...Object.keys(categories).map((slug) => `categories/${slug}/`), ...articles.map((article) => `articles/${article.slug}/`)];
@@ -193,11 +191,13 @@ write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="htt
 write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${absoluteUrl('sitemap.xml')}\n`);
 write('.nojekyll', '');
 if (siteConfig.customDomain) write('CNAME', `${siteConfig.customDomain}\n`);
+else fs.rmSync(path.join(distDirectory, 'CNAME'), { force: true });
 
 let home = fs.readFileSync(path.join(distDirectory, 'index.html'), 'utf8');
 const homeCanonical = siteUrl ? `${siteUrl}/` : './';
 const homeImage = siteUrl ? `${siteUrl}/assets/character.png` : 'assets/character.png';
 home = home
+  .replace(/(<p class="about__intro">)[\s\S]*?(<\/p>)/, (_, start, end) => start + escapeHtml(siteConfig.about) + end)
   .replace(/<link rel="canonical" href="[^"]+">/, `<link rel="canonical" href="${homeCanonical}">`)
   .replace(/<meta property="og:url" content="[^"]+">/, `<meta property="og:url" content="${homeCanonical}">`)
   .replace(/<meta property="og:image" content="[^"]+">/, `<meta property="og:image" content="${homeImage}">`);

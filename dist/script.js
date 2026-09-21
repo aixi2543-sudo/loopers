@@ -39,6 +39,7 @@ function enterSite() {
   if (isEntering) return;
   isEntering = true;
   entrance.classList.add('is-animating');
+  try { sessionStorage.setItem('xiaoyuan-entered', '1'); } catch {}
 
   window.setTimeout(() => {
     entrance.classList.add('is-leaving');
@@ -54,6 +55,7 @@ function enterSite() {
 }
 
 function replayIntro() {
+  document.documentElement.classList.remove('skip-intro');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   entrance.classList.remove('is-leaving', 'is-animating');
   entrance.removeAttribute('aria-hidden');
@@ -158,3 +160,11 @@ reader.addEventListener('click', (event) => {
 reader.addEventListener('close', () => document.body.classList.remove('is-reading'));
 
 activateTab(tabs[0]);
+
+if (document.documentElement.classList.contains('skip-intro')) {
+  entrance.classList.add('is-leaving');
+  entrance.setAttribute('aria-hidden', 'true');
+  archive.classList.add('is-visible');
+  archive.setAttribute('aria-hidden', 'false');
+  document.body.classList.remove('is-locked');
+}

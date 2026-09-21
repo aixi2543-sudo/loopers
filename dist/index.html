@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="效原的个人档案：风景、思想与日常记录。">
+  <meta name="description" content="“效原”的个人档案：风景、思想与日常记录。">
   <meta name="theme-color" content="#e8dfcc">
   <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://thephoenixraincey.top/">
+  <link rel="canonical" href="https://aixi2543-sudo.github.io/loopers/">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="效原 · Archive">
-  <meta property="og:title" content="效原 · Archive">
-  <meta property="og:description" content="效原的个人档案：风景、思想与日常记录。">
-  <meta property="og:url" content="https://thephoenixraincey.top/">
-  <meta property="og:image" content="https://thephoenixraincey.top/assets/character.png">
+  <meta property="og:site_name" content="“效原” · Archive">
+  <meta property="og:title" content="“效原” · Archive">
+  <meta property="og:description" content="“效原”的个人档案：风景、思想与日常记录。">
+  <meta property="og:url" content="https://aixi2543-sudo.github.io/loopers/">
+  <meta property="og:image" content="https://aixi2543-sudo.github.io/loopers/assets/character.png">
   <meta name="twitter:card" content="summary_large_image">
-  <title>效原 · Archive</title>
+  <title>“效原” · Archive</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23131313'/%3E%3Cpath d='M16 20h32M16 32h24M16 44h32' stroke='%23f4f1ea' stroke-width='6'/%3E%3C/svg%3E">
+  <script src="intro-state.js"></script>
+  <style>html.skip-intro #entrance { display: none; } html.skip-intro #archive { opacity: 1; transform: none; visibility: visible; } html.skip-intro body.is-locked { overflow: auto; }</style>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="is-locked">
   <!-- 开始界面：点击任意位置进入 -->
-  <div class="entrance" id="entrance" role="dialog" aria-label="进入效原的个人主页">
+  <div class="entrance" id="entrance" role="dialog" aria-label="进入“效原”的个人主页">
     <button class="entrance__trigger" id="enterButton" type="button" aria-label="点击进入主页">
       <span class="entrance__label">点击进入</span>
       <span class="entrance__rule" aria-hidden="true"></span>
@@ -42,7 +44,7 @@
     <header class="masthead">
       <div class="identity">
         <!-- 修改昵称：替换下面的“效原” -->
-        <p class="identity__cn">效原</p>
+        <p class="identity__cn">“效原”</p>
         <h1>XIAOYUAN<br>ARCHIVE</h1>
       </div>
       <div class="issue" aria-label="档案编号">
@@ -52,7 +54,7 @@
     </header>
 
     <nav class="site-nav" aria-label="网站导航">
-      <a aria-current="page" href="./">首页</a>
+      <a aria-current="page" href="#archive">首页</a>
       <a href="articles/">文章</a>
       <a href="categories/">分类</a>
       <a href="about/">About</a>
@@ -117,24 +119,16 @@
 
       <!-- SELF 内容：简介、个人文章与链接 -->
       <div class="panel" id="panel-self" role="tabpanel" aria-labelledby="tab-self" tabindex="0" hidden>
-        <div class="panel__index">03 / SELF · 02 ARTICLES</div>
+        <div class="panel__index">03 / SELF · PROFILE</div>
         <article class="about">
           <p class="eyebrow">PROFILE</p>
           <div class="about__grid">
-            <h2>效原</h2>
+            <h2>“效原”</h2>
             <p class="about__intro">像体育生的理科生有颗文科生的心</p>
           </div>
-          <!-- SELF 文章：位于简介与外部链接之间 -->
-          <section class="self-writing" aria-labelledby="self-writing-title">
-            <p class="eyebrow" id="self-writing-title">SELECTED WRITING / 自述</p>
-            <div class="article-list">
-              <button class="article-card" type="button" data-title="似此星辰夜非夜" data-file="articles/sici-xingchen.txt"><span class="article-card__no">S—01</span><span class="article-card__title">似此星辰夜非夜</span><span class="article-card__meta">自省 / 告别</span><span class="article-card__arrow">↗</span></button>
-              <button class="article-card" type="button" data-title="炼狱之涉" data-file="articles/lianyu-zhishe.txt"><span class="article-card__no">S—02</span><span class="article-card__title">炼狱之涉</span><span class="article-card__meta">成长 / 理想</span><span class="article-card__arrow">↗</span></button>
-            </div>
-          </section>
-          <a class="external-link" href="https://thephoenixraincey.top" target="_blank" rel="noopener noreferrer">
+          <a class="external-link" href="#archive">
             <span>VISIT LINK</span>
-            <span>thephoenixraincey.top ↗</span>
+            <span>aixi2543-sudo.github.io/loopers/</span>
           </a>
         </article>
       </div>
@@ -183,7 +177,7 @@
 
     <footer class="footer">
       <span>© 2026 XIAOYUAN</span>
-      <a href="https://thephoenixraincey.top" target="_blank" rel="noopener noreferrer">THEPHOENIXRAINCEY.TOP ↗</a>
+      <a href="#archive">AIXI2543-SUDO.GITHUB.IO/LOOPERS/</a>
       <button id="replayButton" type="button">REPLAY INTRO</button>
     </footer>
   </main>

@@ -35,7 +35,7 @@ for (const file of htmlFiles) {
   }
 }
 
-for (const file of ['index.html', '404.html', 'robots.txt', 'sitemap.xml', '.nojekyll', 'CNAME']) {
+for (const file of ['index.html', '404.html', 'robots.txt', 'sitemap.xml', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) errors.push(`missing dist/${file}`);
 }
 
